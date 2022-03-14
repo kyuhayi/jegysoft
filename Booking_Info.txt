@@ -1,0 +1,23 @@
+#login_id =
+Ky.oakville@gmail.com
+
+#login_pw =
+planet00
+
+#courtbooking_datetime = year, month, day, hour(24hr): e.g. 2019,11,2,14
+2020,12,10,20
+
+#login_datetime = year,month,day,hour(24hr),minutes,seconds
+2020,12,6,6,59,0
+
+#booking_start_datetime year,month,day,hour(24hr),minutes,seconds
+2020,12,6,7,0,8
+
+#players = Dae Jung, Dongho Kwak, Jaeyong Jung, John Choi, Jongho Keum, Kyuha Yi, Marcus Seong, Matthew Yoo, Sean Park
+Dae Jung,Dongho Kwak,Jaeyong Jung
+
+#Duration = #60 or 120 only
+120
+
+#Court number
+1
