@@ -6,7 +6,8 @@ from selenium.webdriver.common.by import By
 
 
 def book(player2, play_time, play_date, court_number, booking_start):
-    browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+    # browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+    browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
     login_url = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
     login_id = "Ky.oakville@gmail.com"
     login_pw = "planet00"
