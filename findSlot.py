@@ -22,19 +22,19 @@ browser.get('https://ts2.clubinterconnect.com/cvt/home/login.do')
 
 WebDriverWait(browser, timeout).until(expected_conditions.element_to_be_clickable((By.ID, 'submit')))
 
-username = browser.find_element_by_id('userid')
+username = browser.find_element(By.ID, 'userid')
 username.send_keys(login_id)
-pw = browser.find_element_by_id('password')
+pw = browser.find_element(By.ID, 'password')
 pw.send_keys(login_pw)
-browser.find_element_by_id('submit').click()
+browser.find_element(By.ID, 'submit').click()
 
 courtString = '1 - 6'
-browser.find_element_by_xpath("//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % courtString).click()
+browser.find_element(By.XPATH, "//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % courtString).click()
 date = 'Jun 8'
-browser.find_element_by_xpath("//*[contains(text(), '%s')]" % date).click()
+browser.find_element(By.XPATH, "//*[contains(text(), '%s')]" % date).click()
 
 while True:
-    book_link = browser.find_elements_by_xpath("//a[contains(@href, '8:30 PM')]")
+    book_link = browser.find_element(By.XPATH, ("//a[contains(@href, '8:30 PM')]"))
     print("Current Time =", datetime.datetime.now().strftime("%H:%M:%S"))
     if len(book_link) > 1:
         print('Found Bonus')

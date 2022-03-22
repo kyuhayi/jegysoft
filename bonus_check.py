@@ -22,17 +22,17 @@ browser.get('https://www2.tennisclubsoft.com/bubbletennis/home/login.do')
 
 WebDriverWait(browser, timeout).until(expected_conditions.element_to_be_clickable((By.ID, 'submit')))
 
-username = browser.find_element_by_id('userid')
+username = browser.find_element(By.ID, 'userid')
 username.send_keys(login_id)
-pw = browser.find_element_by_id('password')
+pw = browser.find_element(By.ID, 'password')
 pw.send_keys(login_pw)
 
-browser.find_element_by_id('submit').click()
+browser.find_element(By.ID, 'submit').click()
 
-browser.find_element_by_link_text('Book a Court').click()
+browser.find_element(By.LINK_TEXT, 'Book a Court').click()
 
 while True:
-    book_link = browser.find_elements_by_xpath("//*[contains(text(), 'Bonus')]")
+    book_link = browser.find_element(By.XPATH, ("//*[contains(text(), 'Bonus')]"))
     print("Current Time =", datetime.datetime.now().strftime("%H:%M:%S"))
     if len(book_link) > 1:
         print('Found Bonus')

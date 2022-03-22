@@ -27,18 +27,18 @@ browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)
 browser.get(loginUrl)
 browser.get(loginUrl)
-username = browser.find_element_by_id('userid')
+username = browser.find_element(By.ID, 'userid')
 username.send_keys(login_id)
-pw = browser.find_element_by_id('password')
+pw = browser.find_element(By.ID, 'password')
 pw.send_keys(login_pw)
 
-browser.find_element_by_id('submit').click()  # login one min before
+browser.find_element(By.ID, 'submit').click()  # login one min before
 pause.until(booking_start)
 
-browser.find_element_by_xpath("//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % court).click()
-browser.find_element_by_xpath("//*[@id='caldaylink']/a[contains(text(), '%s')]" % date).click()
+browser.find_element(By.XPATH, "//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % court).click()
+browser.find_element(By.XPATH, "//*[@id='caldaylink']/a[contains(text(), '%s')]" % date).click()
 playTime = time + ' ' + amPm
-threesome = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % playTime)
+threesome = browser.find_element(By.XPATH, ("//*[contains(text(), '%s')]" % playTime)
 if court == 1 or court == 2:
     shouldClick = threesome[0]
 elif court == 3 or court == 4:
@@ -49,6 +49,6 @@ shouldClick.click()
 browser.find_element_by_name('Team_Two_Auto').send_keys(player2)
 final_ = "//*[contains(@onclick, 'final')]"
 WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.XPATH, final_)))
-browser.find_element_by_xpath(final_).click()
+browser.find_element(By.XPATH, final_).click()
 
 # actions.move_to_element(browser.find_element(By.XPATH, "//*[contains(@onclick, 'final')]")).click().perform()

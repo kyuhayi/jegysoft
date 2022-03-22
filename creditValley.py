@@ -34,12 +34,12 @@ browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)
 browser.get(loginUrl)
 browser.get(loginUrl)
-username = browser.find_element_by_id('userid')
+username = browser.find_element(By.ID, 'userid')
 username.send_keys(login_id)
-pw = browser.find_element_by_id('password')
+pw = browser.find_element(By.ID, 'password')
 pw.send_keys(login_pw)
 
-browser.find_element_by_id('submit').click()  # login one min before
+browser.find_element(By.ID, 'submit').click()  # login one min before
 pause.until(booking_start)  # because we are too fast
 
 #  Book Court 1 - 6
@@ -47,11 +47,11 @@ if 1 <= court <= 6:
     courtString = '1 - 6'
 else:
     courtString = '7 - 8'
-browser.find_element_by_xpath("//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % courtString).click()
-browser.find_element_by_xpath("//*[contains(text(), '%s')]" % date).click()
+browser.find_element(By.XPATH, "//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % courtString).click()
+browser.find_element(By.XPATH, "//*[contains(text(), '%s')]" % date).click()
 
 playTime = time + ' ' + amPm
-threesome = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % playTime)
+threesome = browser.find_element(By.XPATH, ("//*[contains(text(), '%s')]" % playTime)
 if court == 1:
     shouldClick = threesome[0]
 elif court == 2:
@@ -72,12 +72,12 @@ else:
     shouldClick = threesome[0]
 
 shouldClick.click()
-browser.find_element_by_id('Team_Two_Auto').send_keys(player2)
-browser.find_element_by_id('Player_three_Auto').send_keys(player3)
-browser.find_element_by_id('Player_Four_Auto').send_keys(player4)
-browser.find_element_by_id('Booking Duration').send_keys('90')
+browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
+browser.find_element(By.ID, 'Player_three_Auto').send_keys(player3)
+browser.find_element(By.ID, 'Player_Four_Auto').send_keys(player4)
+browser.find_element(By.ID, 'Booking Duration').send_keys('90')
 final_btn = "//*[contains(@onclick, 'final')]"
 WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.XPATH, final_btn)))
-browser.find_element_by_xpath(final_btn).click()
+browser.find_element(By.XPATH, final_btn).click()
 
 # actions.move_to_element(browser.find_element(By.XPATH, "//*[contains(@onclick, 'final')]")).click().perform()

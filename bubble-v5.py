@@ -18,13 +18,13 @@ choi = 'John Choi'
 hwang = 'Dy Hwang'
 
 
-booking_start = datetime.datetime(2022, 2, 6, 7, 0, 9)
-playDate = "2022-02-08"
+booking_start = datetime.datetime(2022, 3, 20, 7, 0, 12)
+playDate = "2022-03-22"
 playTime = "06:00"  # 01:00
 courtNumber = 1  # 1-2
 player2 = kwak
-player3 = seong
-player4 = choi
+player3 = jung
+player4 = hwang
 
 print("==================================================")
 print("Booking is running at " + booking_start.strftime("%b %d %a, %H:%M:%S"))
@@ -33,16 +33,17 @@ pause.until(booking_start - datetime.timedelta(minutes=1))
 loginUrl = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
 login_id = "Ky.oakville@gmail.com"
 login_pw = "planet00"
-browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+# browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)
 browser.get(loginUrl)
 browser.get(loginUrl)
-username = browser.find_element_by_id('userid')
+username = browser.find_element(By.ID, 'userid')
 username.send_keys(login_id)
-pw = browser.find_element_by_id('password')
+pw = browser.find_element(By.ID, 'password')
 pw.send_keys(login_pw)
 
-browser.find_element_by_id('submit').click()  # login one min before
+browser.find_element(By.ID, 'submit').click()  # login one min before
 pause.until(booking_start)  # because we are too fast
 
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
@@ -51,11 +52,11 @@ param = "item={court}&date={date}&time={time}%20PM".format(court=courtNumber, da
 
 browser.get(uri + param)
 
-browser.find_element_by_id('Team_Two_Auto').send_keys(player2)
-browser.find_element_by_id('Player_three_Auto').send_keys(player3)
-browser.find_element_by_id('Player_Four_Auto').send_keys(player4)
-browser.find_element_by_id('Booking Duration').send_keys('120')
+browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
+browser.find_element(By.ID, 'Player_three_Auto').send_keys(player3)
+browser.find_element(By.ID, 'Player_Four_Auto').send_keys(player4)
+browser.find_element(By.ID, 'Booking Duration').send_keys('120')
 final_btn = "//*[contains(@onclick, 'final')]"
 WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.XPATH, final_btn)))
-browser.find_element_by_xpath(final_btn).click()
+browser.find_element(By.XPATH, final_btn).click()
 
