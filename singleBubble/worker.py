@@ -2,12 +2,15 @@ import datetime
 
 import pause
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def book(player2, play_time, play_date, court_number, open_book_page, hit_it):
-    # browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
-    browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    browser.get("https://www.google.com")
     login_url = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
     login_id = "Ky.oakville@gmail.com"
     login_pw = "planet00"
@@ -31,5 +34,5 @@ def book(player2, play_time, play_date, court_number, open_book_page, hit_it):
     print(ts + " started " + datetime.datetime.now().strftime("%S.%f"))
     try:
         print(ts + " " + browser.find_element(By.CSS_SELECTOR, "body > h1").text)
-    except NameError:
+    except NoSuchElementException:
         print(ts + " Booked successfully")

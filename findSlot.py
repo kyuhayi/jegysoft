@@ -13,7 +13,8 @@ login_id = "Ky.oakville@gmail.com"
 login_pw = "planet00"
 timeout = 10  # seconds
 
-browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+# browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
+browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
 actions = ActionChains(browser)
 
 
