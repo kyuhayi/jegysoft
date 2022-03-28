@@ -1,4 +1,3 @@
-from selenium import webdriver
 import datetime
 
 start = datetime.datetime(2022, 3, 26, 16, 0, 0)

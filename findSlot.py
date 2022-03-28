@@ -1,20 +1,21 @@
 import datetime
 
 import pause
-import selenium.webdriver.support
 from pygame import mixer
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 
 login_id = "Ky.oakville@gmail.com"
 login_pw = "planet00"
 timeout = 10  # seconds
 
-# browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
-browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
+browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+browser.get("https://www.google.com")
 actions = ActionChains(browser)
 
 

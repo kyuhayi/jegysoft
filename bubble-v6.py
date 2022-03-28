@@ -3,9 +3,11 @@ import datetime
 import pause
 import selenium.webdriver.common.action_chains
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 
 kwak = 'Dongho Kwak'
 keum = 'Jongho Keum'
@@ -33,8 +35,8 @@ pause.until(booking_start - datetime.timedelta(minutes=1))
 loginUrl = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
 login_id = "Ky.oakville@gmail.com"
 login_pw = "planet00"
-# browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
-browser = webdriver.Chrome("C:/Users/YiKyuha/scratch/jegysoft/chromedriver99.exe")
+browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+browser.get("https://www.google.com")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)
 browser.get(loginUrl)
 browser.get(loginUrl)
