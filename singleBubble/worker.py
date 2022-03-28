@@ -21,7 +21,7 @@ def book(player2, play_time, play_date, court_number, open_book_page, hit_it):
     pw = browser.find_element(By.ID, 'password')
     pw.send_keys(login_pw)
     browser.find_element(By.ID, 'submit').click()
-    ts = open_book_page.strftime("%S.%f")
+    ts = open_book_page.strftime("%H:%M:%S")
     pause.until(open_book_page)
     uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
     param = "item=" + str(court_number) + "&date=" + play_date + "&time=" + play_time + "%20PM"
@@ -31,8 +31,8 @@ def book(player2, play_time, play_date, court_number, open_book_page, hit_it):
     final_btn = "//*[contains(@onclick, 'final')]"
     pause.until(hit_it)
     browser.find_element(By.XPATH, final_btn).click()
-    print(ts + " started " + datetime.datetime.now().strftime("%S.%f"))
+    print(ts + " clicked BOOK button at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
     try:
         print(ts + " " + browser.find_element(By.CSS_SELECTOR, "body > h1").text)
     except NoSuchElementException:
-        print(ts + " Booked successfully")
+        print(ts + " Booked successfully at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
