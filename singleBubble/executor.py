@@ -5,9 +5,9 @@ import worker
 
 jin = 'Bora Jin'
 
-start = datetime.datetime(2022, 3, 28, 20, 0, 0)
-playDate = "2022-03-28"
-playTime = "10:00"  # 01:00
+start = datetime.datetime(2022, 4, 12, 0, 0, 0)
+playDate = "2022-04-12"
+playTime = "07:00"  # 01:00
 courtNumber = 2  # 1-2
 player2 = jin
 

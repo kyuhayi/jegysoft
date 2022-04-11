@@ -31,8 +31,8 @@ def book(player2, play_time, play_date, court_number, open_book_page, hit_it):
     final_btn = "//*[contains(@onclick, 'final')]"
     pause.until(hit_it)
     browser.find_element(By.XPATH, final_btn).click()
-    print(ts + " clicked BOOK button at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
+    print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " - clicked BOOK button by " + ts)
     try:
-        print(ts + " " + browser.find_element(By.CSS_SELECTOR, "body > h1").text)
+        print(browser.find_element(By.CSS_SELECTOR, "body > h1").text + " by " + ts)
     except NoSuchElementException:
-        print(ts + " Booked successfully at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
+        print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " *** Booked successfully by " + ts)
