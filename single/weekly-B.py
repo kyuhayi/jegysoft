@@ -14,13 +14,14 @@ player2 = jin
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
 param = "item=" + str(court_number) + "&date=" + play_date + "&time=" + play_time + "%20PM"
 book_page_url = uri + param
-
+login_url = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
+login = "Ky.oakville@gmail.com"
+passwd = "planet00"
 
 for interval in range(3, 5, 1):
     time_open_book_page = start
     time_hit_it = start + datetime.timedelta(seconds=interval)
     thread = threading.Thread(target=worker.book,
-                              args=(player2, book_page_url, time_open_book_page, time_hit_it,
-                                    'https://www2.tennisclubsoft.com/bubbletennis/home/login.do',
-                                    "Ky.oakville@gmail.com", "planet00"))
+                              args=(book_page_url, time_open_book_page, time_hit_it, login_url, login, passwd,
+                                    player2))
     thread.start()

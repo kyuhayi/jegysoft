@@ -19,12 +19,14 @@ court_item = {1: "1", 2: "2", 3: "3", 4: "4", 5: "19", 6: "20"}
 uri = "https://www.tennisclubsoft.com/appleby/home/newView.do?id=304&calendar=7&"
 param = "item=" + court_item[court_number] + "&date=" + play_date + "&time=" + play_time + "%20PM"
 book_page_url = uri + param
+login_url = 'https://www.tennisclubsoft.com/appleby/home/login.do'
+login = "Ky.oakville@gmail.com"
+passwd = "planet00"
 
 for interval in range(3, 5, 1):
     open_book_page = start
     hit_it = start + datetime.timedelta(seconds=interval)
     thread = threading.Thread(target=worker.book,
-                              args=(player2, player3, player4, book_page_url, open_book_page, hit_it,
-                                    'https://www.tennisclubsoft.com/appleby/home/login.do',
-                                    "Ky.oakville@gmail.com", "planet00"))
+                              args=(book_page_url, open_book_page, hit_it, login_url, login, passwd,
+                                    player2, player3, player4))
     thread.start()

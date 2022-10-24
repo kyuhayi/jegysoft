@@ -9,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 google_url = "https://www.google.com"
 
-def book(player2, book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw):
+def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     browser.get(google_url)
     pause.until(time_open_book_page - datetime.timedelta(seconds=30))
