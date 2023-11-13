@@ -15,13 +15,13 @@ hwang = 'Dy Hwang'
 jin = 'Bora Jin'
 yi = 'Kyuha Yi'
 
-start = datetime.datetime(2023, 4, 2, 7, 0, 1)
-play_date = "2023-04-03"
+start = datetime.datetime(2023, 4, 16, 7, 0, 1)
+play_date = "2023-04-17"
 play_time = "08:00"  # 01:00
 court_number = 1  # 1-6
-player2 = keum
-player3 = dae_jung
-player4 = hwang
+player2 = kwak
+player3 = seong
+player4 = yoo
 
 
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"

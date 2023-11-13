@@ -6,9 +6,9 @@ import worker
 jin = 'Bora Jin'
 kwak = 'Dongho Kwak'
 
-start = datetime.datetime(2023, 2, 15, 0, 0, 0)
-play_date = "2023-02-15"  # 2022-08-12
-play_time = "10:00"  # 01:00
+start = datetime.datetime(2023, 11, 13, 18, 0, 0)
+play_date = "2023-11-13"  # 2022-08-12
+play_time = "08:00"  # 01:00
 court_number = 1  # 1-2
 player2 = jin
 

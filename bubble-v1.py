@@ -20,13 +20,14 @@ choi = 'John Choi'
 hwang = 'Dy Hwang'
 
 
-booking_start = datetime.datetime(2022, 3, 20, 7, 0, 7)
-playDate = "2022-03-22"
+booking_start = datetime.datetime(2023, 11, 5, 7, 0, 0, microsecond=500)
+playDate = "2023-11-16"
 playTime = "08:00"  # 01:00
-courtNumber = 2  # 1-2
-player2 = kwak
-player3 = jung
-player4 = hwang
+courtNumber = 1  # 1-2
+player2 = hwang
+player3 = yoo
+player4 = keum
+
 
 print("==================================================")
 print("Booking is running at " + booking_start.strftime("%b %d %a, %H:%M:%S"))
