@@ -20,13 +20,13 @@ choi = 'John Choi'
 hwang = 'Dy Hwang'
 
 
-booking_start = datetime.datetime(2023, 11, 12, 7, 0, 1, microsecond=500)
-playDate = "2023-11-07"
-playTime = "08:00"  # 01:00
+booking_start = datetime.datetime(2023, 12, 10, 7, 0, 1, microsecond=500)
+playDate = "2023-12-15"
+playTime = "07:00"  # 01:00
 courtNumber = 1  # 1-2
-player2 = choi
+player2 = park
 player3 = daewoong
-player4 = yoo
+player4 = hwang
 
 
 print("==================================================")
@@ -34,7 +34,7 @@ print("Booking is running at " + booking_start.strftime("%b %d %a, %H:%M:%S"))
 print("==================================================")
 pause.until(booking_start - datetime.timedelta(minutes=1))
 loginUrl = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
-login_id = "Ky.oakville@gmail.com"
+login_id = "bjin@bentosushi.com"
 login_pw = "planet00"
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 browser.get("https://www.google.com")

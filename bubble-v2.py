@@ -19,15 +19,13 @@ jung = 'Jaeyong Jung'
 choi = 'John Choi'
 hwang = 'Dy Hwang'
 
-
-booking_start = datetime.datetime(2023, 11, 12, 7, 0, 1)
-playDate = "2023-11-16"
+booking_start = datetime.datetime(2023, 12, 10, 7, 0, 1)
+playDate = "2023-12-12"
 playTime = "08:00"  # 01:00
 courtNumber = 1  # 1-2
-player2 = hwang
-player3 = yoo
-player4 = keum
-
+player2 = yoo
+player3 = hwang
+player4 = choi
 
 print("==================================================")
 print("Booking is running at " + booking_start.strftime("%b %d %a, %H:%M:%S"))
@@ -62,4 +60,3 @@ browser.find_element(By.ID, 'Booking Duration').send_keys('120')
 final_btn = "//*[contains(@onclick, 'final')]"
 WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.XPATH, final_btn)))
 browser.find_element(By.XPATH, final_btn).click()
-

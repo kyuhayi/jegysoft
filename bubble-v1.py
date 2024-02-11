@@ -20,13 +20,13 @@ choi = 'John Choi'
 hwang = 'Dy Hwang'
 
 
-booking_start = datetime.datetime(2023, 11, 5, 7, 0, 0, microsecond=500)
-playDate = "2023-11-16"
+booking_start = datetime.datetime(2023, 12, 10, 7, 0, 0, microsecond=500)
+playDate = "2023-12-12"
 playTime = "08:00"  # 01:00
 courtNumber = 1  # 1-2
-player2 = hwang
-player3 = yoo
-player4 = keum
+player2 = yoo
+player3 = hwang
+player4 = choi
 
 
 print("==================================================")
