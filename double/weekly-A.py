@@ -21,7 +21,7 @@ param = "item=" + court_item[court_number] + "&date=" + play_date + "&time=" + p
 book_page_url = uri + param
 login_url = 'https://www.tennisclubsoft.com/appleby/home/login.do'
 login = "Ky.oakville@gmail.com"
-passwd = "planet00"
+passwd = ""
 
 for interval in range(3, 5, 1):
     open_book_page = start

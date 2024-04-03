@@ -29,7 +29,7 @@ param = "item=" + str(court_number) + "&date=" + play_date + "&time=" + play_tim
 book_page_url = uri + param
 login_url = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
 login = "bjin@bentosushi.com"
-passwd = "planet00"
+passwd = ""
 
 for interval in range(3, 5, 1):
     open_book_page = start

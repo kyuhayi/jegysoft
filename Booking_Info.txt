@@ -2,7 +2,7 @@
 Ky.oakville@gmail.com
 
 #login_pw =
-planet00
+
 
 #courtbooking_datetime = year, month, day, hour(24hr): e.g. 2019,11,2,14
 2020,12,10,20

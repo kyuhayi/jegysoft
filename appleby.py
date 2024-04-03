@@ -22,7 +22,7 @@ print("==================================================")
 pause.until(booking_start - datetime.timedelta(minutes=1))
 loginUrl = 'https://www.tennisclubsoft.com/appleby/home/login.do'
 login_id = "Ky.oakville@gmail.com"
-login_pw = "planet00"
+login_pw = ""
 browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)
 browser.get(loginUrl)

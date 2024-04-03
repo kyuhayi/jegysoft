@@ -31,7 +31,7 @@ print("==================================================")
 pause.until(booking_start - datetime.timedelta(minutes=1))
 loginUrl = 'https://ts2.clubinterconnect.com/cvt/home/login.do'
 login_id = "Ky.oakville@gmail.com"
-login_pw = "planet00"
+login_pw = ""
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 browser.get("https://www.google.com")
 actions = selenium.webdriver.common.action_chains.ActionChains(browser)

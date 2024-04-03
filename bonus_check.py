@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 login_id = "Ky.oakville@gmail.com"
-login_pw = "planet00"
+login_pw = ""
 timeout = 10  # seconds
 
 # browser = webdriver.Chrome("/home/kyuu/opt/chromedriver99")
