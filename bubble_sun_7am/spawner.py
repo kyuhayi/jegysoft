@@ -15,5 +15,9 @@ player2 = kwak
 player3 = keum
 player4 = park
 
-for mills in range(0, 2000, 90):  # 0, 100, 200, 300, 400 ... 2000
-    threading.Thread(target=egg.book, args=("sat", 8, 1, player2, player3, player4, mills)).start()
+for mills in range(0, 1000, 90):
+    threading.Thread(target=egg.book, args=("mon", 8, 1, player2, player3, player4, mills)).start()
+
+for mills in range(1000, 2000, 90):
+    threading.Thread(target=egg.book, args=("mon", 6, 1, player2, player3, player4, mills)).start()
+
