@@ -2,6 +2,7 @@ import datetime
 
 import pause
 import selenium.webdriver.common.action_chains
+from selenium import webdriver
 # from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -38,7 +39,7 @@ pause.until(booking_start)
 browser.find_element(By.XPATH, "//a[contains(text(), '%s') and contains(text(), 'Book Court')]" % court).click()
 browser.find_element(By.XPATH, "//*[@id='caldaylink']/a[contains(text(), '%s')]" % date).click()
 playTime = time + ' ' + amPm
-threesome = browser.find_element(By.XPATH, ("//*[contains(text(), '%s')]" % playTime)
+threesome = browser.find_element(By.XPATH, ("//*[contains(text(), '%s')]" % playTime))
 if court == 1 or court == 2:
     shouldClick = threesome[0]
 elif court == 3 or court == 4:
@@ -46,7 +47,7 @@ elif court == 3 or court == 4:
 else:
     shouldClick = threesome[2]
 shouldClick.click()
-browser.find_element_by_name('Team_Two_Auto').send_keys(player2)
+browser.find_element(By.NAME, 'Team_Two_Auto').send_keys(player2)
 final_ = "//*[contains(@onclick, 'final')]"
 WebDriverWait(browser, 10).until(expected_conditions.presence_of_element_located((By.XPATH, final_)))
 browser.find_element(By.XPATH, final_).click()

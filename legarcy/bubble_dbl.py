@@ -1,7 +1,7 @@
 import datetime
 import threading
 
-import worker
+import dbl_worker
 
 kwak = 'Dongho Kwak'
 yoo = 'Matthew Yoo'
@@ -34,7 +34,7 @@ passwd = ""
 for interval in range(3, 5, 1):
     open_book_page = start
     hit_it = start + datetime.timedelta(seconds=interval)
-    thread = threading.Thread(target=worker.book,
+    thread = threading.Thread(target=dbl_worker.book,
                               args=(book_page_url, open_book_page, hit_it, login_url, login, passwd,
                                     player2, player3, player4))
     thread.start()
