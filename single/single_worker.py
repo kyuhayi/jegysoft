@@ -5,13 +5,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 google_url = "https://www.google.com"
 
 def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    browser.get(google_url)
+    browser = get_browser()
     pause.until(time_open_book_page - datetime.timedelta(seconds=30))
     browser.get(login_url)  # retry this
     username = browser.find_element(By.ID, 'userid')
@@ -32,3 +32,11 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
         print(browser.find_element(By.CSS_SELECTOR, "body > h1").text + " by " + ts)
     except NoSuchElementException:
         print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " *** Booked successfully by " + ts)
+    finally:
+        browser.close()
+
+def get_browser():
+    options = Options()
+    options.add_experimental_option("detach", True)
+    browser = webdriver.Chrome(options=options)
+    return browser

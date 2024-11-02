@@ -15,9 +15,9 @@ player2 = kwak
 player3 = keum
 player4 = park
 
-for mills in range(0, 1000, 90):  # Every 90 milliseconds for 1 second from 07:00
+for mills in range(0, 3000, 190):  # Every 190 milliseconds for 3 second from 07:00
     threading.Thread(target=egg.book("mon", 8, 1, player2, player3, player4, mills)).start()
 
-for mills in range(1000, 2000, 90):  # Every 90 milliseconds for 1 second from 07:01
+for mills in range(2000, 5000, 290):
     threading.Thread(target=egg.book("mon", 6, 1, player2, player3, player4, mills)).start()
 
