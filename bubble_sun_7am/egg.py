@@ -1,4 +1,5 @@
 import datetime
+
 import pause
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -13,7 +14,8 @@ BOOKING_URI = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=3
 
 def book(day, time, court, player2, player3, player4, delay_mill):
     browser = get_browser()
-    pause.until(login_at_0657())
+    pause.until(get_sunday_3min_before_7am())
+
     login(browser)
     book_start_time = book_for7_with_delay(delay_mill)
     pause.until(book_start_time)
@@ -37,11 +39,19 @@ def book(day, time, court, player2, player3, player4, delay_mill):
 
 
 def book_for7_with_delay(delay_mill):
-    return get_tomorrow_7am() + datetime.timedelta(milliseconds=delay_mill)
+    return get_sunday_7am() + datetime.timedelta(milliseconds=delay_mill)
 
 
-def login_at_0657():
-    return get_tomorrow_7am() - datetime.timedelta(minutes=3)
+def get_sunday_3min_before_7am():
+    return get_sunday_7am() - datetime.timedelta(minutes=3)
+
+
+def get_sunday_7am():
+    return next_weekday_date("sun").replace(hour=7, minute=0, second=0, microsecond=0)
+
+
+def next_weekday_date_str(day_abbr):
+    return next_weekday_date(day_abbr).strftime("%Y-%m-%d")
 
 
 def login(browser):
@@ -52,21 +62,15 @@ def login(browser):
 
 
 def get_booking_page_url(day, time, court):
-    booking_param = "item=" + str(court) + "&date=" + next_weekday_date(day) + "&time=" + format_hour(time) + "%20PM"
-    book_page_url = BOOKING_URI + booking_param
-    return book_page_url
-
-
-def get_tomorrow_7am():
-    return ((datetime.datetime.today() + datetime.timedelta(days=1))
-            .replace(hour=7, minute=0, second=0, microsecond=0))
+    booking_param = ("item={0}&date={1}&time={2}%20PM"
+                     .format(str(court), next_weekday_date_str(day), format_hour(time)))
+    return BOOKING_URI + booking_param
 
 
 def get_browser():
     options = Options()
     options.add_experimental_option("detach", True)
-    browser = webdriver.Chrome(options=options)
-    return browser
+    return webdriver.Chrome(options=options)
 
 
 def next_weekday_date(day_abbr):
@@ -79,12 +83,8 @@ def next_weekday_date(day_abbr):
 
     today = datetime.datetime.now()
     days_ahead = (target_day - today.weekday() + 7) % 7
-    if days_ahead == 0:
-        days_ahead = 7  # Ensures we get the next occurrence, not today if it's the same day
-    next_date = today + datetime.timedelta(days=days_ahead)
-    return next_date.strftime("%Y-%m-%d")
+    return today + datetime.timedelta(days=days_ahead)
 
 
 def format_hour(hour):
-    # Convert hour to two-digit string and add ":00" for minutes
-    return f"{hour:02}:00"
+    return f"{hour:02}:00"  # Convert hour to two-digit string and add ":00" for minutes
