@@ -8,8 +8,8 @@ import webdriver_manager.chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
-LOGIN_PW = "planet00"
-LOGIN_ID = "ky.oakville@gmail.com"
+LOGIN_PW = "rmawhdgh"
+LOGIN_ID = "hydrokeum@gmail.com"
 LOGIN_URL = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
 BOOKING_URI = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
 
