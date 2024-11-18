@@ -15,7 +15,7 @@ BOOKING_URI = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=3
 
 
 def book(day, time, court, player2, player3, player4, delay_mill):
-    browser = get_chrome()
+    browser = get_chrome_headless()
     pause.until(date_3min_before_7am())
 
     login(browser)
@@ -80,9 +80,10 @@ def str_booking_page_url(day, time, court):
     return BOOKING_URI + booking_param
 
 
-def get_chrome():
+def get_chrome_headless():
     options = selenium.webdriver.chrome.options.Options()
     options.add_experimental_option("detach", True)
+    options.add_argument("headless")
     chrome = selenium.webdriver.Chrome(options=options)
     chrome.implicitly_wait(5)  # seconds
     return chrome
