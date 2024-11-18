@@ -22,23 +22,31 @@ def book(day, time, court, player2, player3, player4, delay_mill):
     book_start_time = date_delayed_7am(delay_mill)
     pause.until(book_start_time)
 
-    browser.get(str_booking_page_url(day, time, court))
-    browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
-    browser.find_element(By.ID, 'Player_three_Auto').send_keys(player3)
-    browser.find_element(By.ID, 'Player_Four_Auto').send_keys(player4)
-    browser.find_element(By.ID, 'Booking Duration').send_keys('120')
-    final_btn_e = "//*[contains(@onclick, 'final')]"
-    browser.find_element(By.XPATH, final_btn_e).click()
+    try:
+        browser.get(str_booking_page_url(day, time, court))
+        browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
+        browser.find_element(By.ID, 'Player_three_Auto').send_keys(player3)
+        browser.find_element(By.ID, 'Player_Four_Auto').send_keys(player4)
+        browser.find_element(By.ID, 'Booking Duration').send_keys('120')
+        browser.find_element(By.ID, 'final').click()
+    except NoSuchElementException:
+        pass
+
+
 
     book_start_time_str = book_start_time.strftime("%H:%M:%S.%f")
 
     try:
-        print(browser.find_element(By.CSS_SELECTOR, "body > h1").text
+        print(browser.find_element(By.CSS_SELECTOR, "h1.error").text
               + " by " + book_start_time_str
               + " at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
     except NoSuchElementException:
-        print("*** Booked successfully by " + book_start_time_str
-              + " at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
+        try:
+            print(browser.find_element(By.CSS_SELECTOR, "div.caltablesec strong").text
+                  + " by " + book_start_time_str
+                  + " at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
+        except NoSuchElementException:
+            pass
     finally:
         browser.close()
 
@@ -75,7 +83,9 @@ def str_booking_page_url(day, time, court):
 def get_chrome():
     options = selenium.webdriver.chrome.options.Options()
     options.add_experimental_option("detach", True)
-    return selenium.webdriver.Chrome(options=options)
+    chrome = selenium.webdriver.Chrome(options=options)
+    chrome.implicitly_wait(5)  # seconds
+    return chrome
 
 def get_chrome_old():
     manager = webdriver_manager.chrome.ChromeDriverManager()

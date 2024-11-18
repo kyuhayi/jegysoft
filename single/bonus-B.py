@@ -3,13 +3,13 @@ import threading
 
 import single_worker
 
-jin = 'Bora Jin'
+jin = 'Bo Jin'
 kwak = 'Dongho Kwak'
 
-start = datetime.datetime(2024, 11, 2, 17, 0, 0)
-play_date = "2024-11-02"  # 2022-08-12
+start = datetime.datetime(2024, 11, 19, 0, 0, 0)
+play_date = "2024-11-19"  # 2022-08-12
 play_time = "07:00"  # 01:00
-court_number = 2  # 1-2
+court_number = 1  # 1-2
 player2 = jin
 
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
