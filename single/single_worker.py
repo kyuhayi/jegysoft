@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-google_url = "https://www.google.com"
+
 
 def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
     browser = get_browser()
@@ -29,14 +29,24 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
     browser.find_element(By.XPATH, final_btn).click()
     print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " - clicked BOOK button by " + ts)
     try:
-        print(browser.find_element(By.CSS_SELECTOR, "body > h1").text + " by " + ts)
+        print(browser.find_element(By.CSS_SELECTOR, "h1.error").text
+              + " by " + ts
+              + " at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
     except NoSuchElementException:
-        print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " *** Booked successfully by " + ts)
+        try:
+            print(browser.find_element(By.CSS_SELECTOR, "div.caltablesec strong").text
+                  + " by " + ts
+                  + " at " + datetime.datetime.now().strftime("%H:%M:%S.%f"))
+        except NoSuchElementException:
+            pass
     finally:
         browser.close()
+
 
 def get_browser():
     options = Options()
     options.add_experimental_option("detach", True)
+    options.add_argument("headless")
     browser = webdriver.Chrome(options=options)
+    browser.implicitly_wait(1)
     return browser
