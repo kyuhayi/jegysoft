@@ -3,11 +3,8 @@ import datetime
 import pause
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-
+from selenium.webdriver.common.by import By
 
 
 def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
