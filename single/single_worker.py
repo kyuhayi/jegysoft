@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import selenium
 
 
 def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
@@ -19,6 +20,7 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
     browser.get(book_page_url)
     browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
     browser.find_element(By.ID, 'Booking Duration').send_keys('60')
+    print("It will run at " + time_hit_it.strftime("%H:%M:%S"))
     pause.until(time_hit_it)
     browser.find_element(By.ID, 'final').click()
     print(datetime.datetime.now().strftime("%H:%M:%S.%f") + " - clicked BOOK button by " + ts)
@@ -36,9 +38,11 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
 
 
 def get_chrome_headless():
-    options = Options()
+    options = selenium.webdriver.chrome.options.Options()
     options.add_experimental_option("detach", True)
-    options.add_argument("headless")
-    browser = webdriver.Chrome(options=options)
-    browser.implicitly_wait(1)
-    return browser
+    options.add_argument("start-maximized")
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
+    chrome = selenium.webdriver.Chrome(options=options)
+    chrome.implicitly_wait(5)  # seconds
+    return chrome

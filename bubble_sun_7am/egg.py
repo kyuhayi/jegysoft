@@ -7,6 +7,8 @@ import selenium.webdriver.chrome.service
 import webdriver_manager.chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 LOGIN_PW = "planet00"
 LOGIN_ID = "ky.oakville@gmail.com"
@@ -15,11 +17,13 @@ BOOKING_URI = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=3
 
 
 def book(day, time, court, player2, player3, player4, delay_mill):
-    browser = get_chrome_headless()
+    browser = get_chrome()
+    print("3 min ahead proceed " + str(date_3min_before_7am()))
     pause.until(date_3min_before_7am())
 
     login(browser)
     book_start_time = date_delayed_7am(delay_mill)
+    print("booking will proceed " + str(book_start_time))
     pause.until(book_start_time)
 
     try:
@@ -28,11 +32,13 @@ def book(day, time, court, player2, player3, player4, delay_mill):
         browser.find_element(By.ID, 'Player_three_Auto').send_keys(player3)
         browser.find_element(By.ID, 'Player_Four_Auto').send_keys(player4)
         browser.find_element(By.ID, 'Booking Duration').send_keys('120')
-        browser.find_element(By.ID, 'final').click()
+        WebDriverWait(browser, 2).until(expected_conditions.frame_to_be_available_and_switch_to_it((By.XPATH,
+                                                                                                    "//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")))
+        WebDriverWait(browser, 2).until(expected_conditions.presence_of_element_located((By.ID, "final"))).click()
+
+        # browser.find_element(By.ID, 'final').click()
     except NoSuchElementException:
         pass
-
-
 
     book_start_time_str = book_start_time.strftime("%H:%M:%S.%f")
 
@@ -80,17 +86,21 @@ def str_booking_page_url(day, time, court):
     return BOOKING_URI + booking_param
 
 
-def get_chrome_headless():
+def get_chrome():
     options = selenium.webdriver.chrome.options.Options()
     options.add_experimental_option("detach", True)
-    options.add_argument("headless")
+    options.add_argument("start-maximized")
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
     chrome = selenium.webdriver.Chrome(options=options)
     chrome.implicitly_wait(5)  # seconds
     return chrome
 
+
 def get_chrome_old():
     manager = webdriver_manager.chrome.ChromeDriverManager()
     return selenium.webdriver.Chrome(service=selenium.webdriver.chrome.service.Service(manager.install()))
+
 
 def date_next_weekday_by(day_abbr):
     # Map abbreviations to day numbers (0 = Monday, 1 = Tuesday, ..., 6 = Sunday)

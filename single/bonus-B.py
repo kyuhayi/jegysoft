@@ -3,15 +3,16 @@ import threading
 
 import single_worker
 
-jin = 'Bo Jin'
+jin = 'Bora Jin'
 kwak = 'Dongho Kwak'
-court_number = 2  # 1-2
+
 player2 = jin
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
 
-start = datetime.datetime(2024, 11, 21, 0, 0, 0)
-play_date = "2024-11-21"  # 2022-08-12
-play_time = "07:00"  # 01:00
+start = datetime.datetime(2024, 12, 21, 18, 0, 0)
+play_date = "2024-12-21"  # 2022-08-12
+play_time = "08:00"  # 01:00
+court_number = 2  # 1-2
 param = "item=" + str(court_number) + "&date=" + play_date + "&time=" + play_time + "%20PM"
 book_page_url = uri + param
 login_url = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
