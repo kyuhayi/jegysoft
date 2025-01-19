@@ -40,14 +40,14 @@ def book(day, time, court, player2, player3, player4, delay_sec):
     pause.sleep(1)
     wait.until(expected_conditions.element_to_be_clickable((By.ID, "final"))).click()
     print("now " + datetime.datetime.now().strftime("%H:%M:%S"))
-    pause.until(sunday_11am())
+    pause.until(sunday_9pm())
 
 
 def sunday_7am_plus(delay_sec):
     return date_7am_sunday() + datetime.timedelta(seconds=delay_sec)
 
 
-def sunday_11am():
+def sunday_9pm():
     return date_7am_sunday() + datetime.timedelta(hours=14)
 
 
