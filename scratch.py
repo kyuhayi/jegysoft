@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-from bubble_sun_7am.egg import date_next_weekday_by, str_date_next_weekday_by, date_7am_sunday, date_3min_before_7am
+from bubble_sun_7am.egg import date_next_weekday_by, str_date_next_weekday_by, date_7am_sunday, sunday_3min_to_7am
 
 # days_ = datetime.datetime.today() + datetime.timedelta(days=1)
 # print(days_.replace(hour=7, minute=0, second=0, microsecond=0))
@@ -31,7 +31,7 @@ from bubble_sun_7am.egg import date_next_weekday_by, str_date_next_weekday_by, d
 # Example usage:
 print(str_date_next_weekday_by("mon"))  # Output example: "2023-11-22"
 print(date_7am_sunday())  # Output example: "2023-11-22"
-print(date_3min_before_7am())  # Output example: "2023-11-22"
+print(sunday_3min_to_7am())  # Output example: "2023-11-22"
 print(date_next_weekday_by("thu"))  # Output example: "2023-11-22"
 print(date_next_weekday_by("fri"))  # Output example: "2023-11-22"
 print(date_next_weekday_by("sat"))  # Output example: "2023-11-22"

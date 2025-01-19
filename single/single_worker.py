@@ -10,12 +10,15 @@ import selenium
 
 def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, login_pw, player2):
     browser = get_chrome_headless()
-    pause.until(time_open_book_page - datetime.timedelta(seconds=30))
+    thirty_sec_adv = time_open_book_page - datetime.timedelta(seconds=30)
+    print("30 sec ahead proceed " + str(thirty_sec_adv))
+    pause.until(thirty_sec_adv)
     browser.get(login_url)  # retry this
     browser.find_element(By.ID, 'userid').send_keys(login_id)
     browser.find_element(By.ID, 'password').send_keys(login_pw)
     browser.find_element(By.ID, 'submit').click()
     ts = time_open_book_page.strftime("%H:%M:%S")
+    print("...........  " + ts)
     pause.until(time_open_book_page)
     browser.get(book_page_url)
     browser.find_element(By.ID, 'Team_Two_Auto').send_keys(player2)
@@ -44,5 +47,5 @@ def get_chrome_headless():
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
     chrome = selenium.webdriver.Chrome(options=options)
-    chrome.implicitly_wait(5)  # seconds
+    chrome.implicitly_wait(50)  # seconds
     return chrome
