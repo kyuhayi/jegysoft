@@ -11,20 +11,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-
-
-LOGIN_PW = "planet00"
-LOGIN_ID = "ky.oakville@gmail.com"
 LOGIN_URL = 'https://www2.tennisclubsoft.com/bubbletennis/home/login.do'
 BOOKING_URI = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
 
 
-def book(day, time, court, player2, player3, player4, delay_sec):
+def book(delay_sec, time, court, day, player2, player3, player4, user, pw):
     browser = get_edge()
-    print("3 min ahead proceed " + str(sunday_3min_to_7am()))
-    pause.until(sunday_3min_to_7am())
-
-    login(browser)
+    three_minute_to_go = sunday_3min_to_7am()
+    browser.get(LOGIN_URL)
+    print("3 min ahead proceed " + str(three_minute_to_go))
+    pause.until(three_minute_to_go)
+    print("opening... login")
+    login(browser, user, pw)
     book_start_time = sunday_7am_plus(delay_sec)
     print("booking will proceed " + str(book_start_time))
     pause.until(book_start_time)
@@ -56,17 +54,17 @@ def sunday_3min_to_7am():
 
 
 def date_7am_sunday():
-    return date_next_weekday_by("sun").replace(hour=7, minute=0, second=0, microsecond=0)
+    return date_next_weekday_by("sun") + datetime.timedelta(hours=7)
 
 
 def str_date_next_weekday_by(day_abbr):
     return date_next_weekday_by(day_abbr).strftime("%Y-%m-%d")
 
 
-def login(browser):
+def login(browser, user, pw):
     browser.get(LOGIN_URL)  # retry this
-    browser.find_element(By.ID, 'userid').send_keys(LOGIN_ID)
-    browser.find_element(By.ID, 'password').send_keys(LOGIN_PW)
+    browser.find_element(By.ID, 'userid').send_keys(user)
+    browser.find_element(By.ID, 'password').send_keys(pw)
     browser.find_element(By.ID, 'submit').click()
 
 
@@ -83,8 +81,8 @@ def get_chrome():
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
     chrome = selenium.webdriver.Chrome(options=options)
-    chrome.implicitly_wait(50)  # seconds
     return chrome
+
 
 def get_edge():
     options = selenium.webdriver.edge.options.Options()
@@ -106,9 +104,11 @@ def date_next_weekday_by(day_abbr):
     except ValueError:
         return "Invalid day abbreviation. Use mon, tue, wed, thu, fri, sat, or sun."
 
-    today = datetime.datetime.now()
+    today = datetime.datetime.today()
     days_ahead = (target_day - today.weekday() + 7) % 7
-    return today + datetime.timedelta(days=days_ahead)
+    d = today + datetime.timedelta(days=days_ahead)
+    combine = datetime.datetime.combine(d, datetime.datetime.min.time())
+    return combine
 
 
 def str_formatted_hour(hour):

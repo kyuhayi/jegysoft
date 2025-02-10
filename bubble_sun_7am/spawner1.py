@@ -11,14 +11,18 @@ hwang = 'Dy Hwang'
 jin = 'Bora Jin'
 yi = 'Kyuha Yi'
 
-player2 = yoo
-player3 = choi
-player4 = kwak
+USER = "ky.oakville@gmail.com"
+PW = "planet00"
 
-threading.Thread(target=egg.book, args=("thu", 8, 2, player2, player3, player4, 1)).start()
-threading.Thread(target=egg.book, args=("thu", 8, 1, player2, player3, player4, 3)).start()
-threading.Thread(target=egg.book, args=("thu", 6, 2, player2, player3, player4, 5)).start()
-threading.Thread(target=egg.book, args=("thu", 6, 1, player2, player3, player4, 7)).start()
+player2 = park
+player3 = choi
+player4 = yoo
+day = "tue"
+
+threading.Thread(target=egg.book, args=(1, 8, 2, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(3, 8, 1, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(5, 6, 2, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(7, 6, 1, day, player2, player3, player4, USER, PW)).start()
 
 
 # for sec in range(1, 8, 3):  # Every 190 milliseconds for 3 second from 07:00

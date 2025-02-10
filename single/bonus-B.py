@@ -9,9 +9,9 @@ kwak = 'Dongho Kwak'
 player2 = jin
 uri = "https://www2.tennisclubsoft.com/bubbletennis/home/newView.do?id=304&calendar=7&"
 
-start = datetime.datetime(2025, 1, 13, 20, 0, 0)
-play_date = "2025-01-13"  # 2022-08-12
-play_time = "10:00"  # 01:00
+start = datetime.datetime(2025, 2, 4, 0, 0, 0)
+play_date = "2025-02-04"  # 2022-08-12
+play_time = "08:00"  # 01:00
 court_number = 1  # 1-2
 param = "item=" + str(court_number) + "&date=" + play_date + "&time=" + play_time + "%20PM"
 book_page_url = uri + param

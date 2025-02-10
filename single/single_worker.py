@@ -13,6 +13,7 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
     thirty_sec_adv = time_open_book_page - datetime.timedelta(seconds=30)
     print("30 sec ahead proceed " + str(thirty_sec_adv))
     pause.until(thirty_sec_adv)
+    print("opening... login")
     browser.get(login_url)  # retry this
     browser.find_element(By.ID, 'userid').send_keys(login_id)
     browser.find_element(By.ID, 'password').send_keys(login_pw)

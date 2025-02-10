@@ -1,5 +1,5 @@
 import threading
-import roe
+import egg
 
 kwak = 'Dongho Kwak'
 yoo = 'Matthew Yoo'
@@ -11,10 +11,16 @@ hwang = 'Dy Hwang'
 jin = 'Bora Jin'
 yi = 'Kyuha Yi'
 
+USER = "ky.oakville@gmail.com"
+PW = "planet00"
+
 player2 = kwak
 player3 = park
 player4 = jung
 
-for mills in range(1000, 3000, 500):  # Every 190 milliseconds for 3 second from 07:00
-    threading.Thread(target=roe.book, args=("wed", 8, 1, player2, player3, player4, mills)).start()
+day = "mon"
 
+threading.Thread(target=egg.book, args=(1, 8, 2, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(3, 8, 1, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(5, 6, 2, day, player2, player3, player4, USER, PW)).start()
+threading.Thread(target=egg.book, args=(7, 6, 1, day, player2, player3, player4, USER, PW)).start()
