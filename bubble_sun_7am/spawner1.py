@@ -3,7 +3,7 @@ import egg
 
 kwak = 'Dongho Kwak'
 yoo = 'Matthew Yoo'
-jung = 'Jaeyong Jung'
+jung = 'Jaeyong Andrew Jung'
 keum = 'Jongho Keum'
 choi = 'John Choi'
 park = 'Sean Park'
