@@ -14,10 +14,10 @@ yi = 'Kyuha Yi'
 USER = "ky.oakville@gmail.com"
 PW = "planet00"
 
-player2 = choi
-player3 = hwang
-player4 = keum
-day = "tue"
+player2 = keum
+player3 = choi
+player4 = park
+day = "mon"
 
 threading.Thread(target=egg.book, args=(1, 8, 2, day, player2, player3, player4, USER, PW)).start()
 threading.Thread(target=egg.book, args=(3, 8, 1, day, player2, player3, player4, USER, PW)).start()

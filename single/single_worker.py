@@ -12,7 +12,7 @@ def book(book_page_url, time_open_book_page, time_hit_it, login_url, login_id, l
     browser = get_chrome_headless()
     thirty_sec_adv = time_open_book_page - datetime.timedelta(seconds=30)
     print("30 sec ahead proceed " + str(thirty_sec_adv))
-    pause.until(thirty_sec_adv)
+    pause.until(thirty_sec_adv) # todo fix to time type
     print("opening... login")
     browser.get(login_url)  # retry this
     browser.find_element(By.ID, 'userid').send_keys(login_id)

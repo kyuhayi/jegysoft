@@ -24,7 +24,7 @@ def book(delay_sec, time, court, day, player2, player3, player4, user, pw):
     print("opening... login")
     login(browser, user, pw)
     book_start_time = sunday_7am_plus(delay_sec)
-    print("booking will proceed " + str(book_start_time))
+    print("(" + str(delay_sec) + ")" + "booking will proceed " + str(book_start_time))
     pause.until(book_start_time.timestamp())
 
     browser.get(str_booking_page_url(day, time, court))
